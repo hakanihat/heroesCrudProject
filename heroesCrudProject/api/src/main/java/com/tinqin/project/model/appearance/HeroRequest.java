@@ -1,4 +1,4 @@
-package com.tinqin.project.model;
+package com.tinqin.project.model.appearance;
 
 import com.tinqin.project.generics.OperationInput;
 import lombok.*;
@@ -7,6 +7,6 @@ import lombok.*;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class HeroAppearanceRequest implements OperationInput {
+public class HeroRequest implements OperationInput {
     private Long heroId;
 }

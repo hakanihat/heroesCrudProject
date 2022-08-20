@@ -1,4 +1,4 @@
-package com.tinqin.project.model;
+package com.tinqin.project.model.appearance;
 
 
 import com.tinqin.project.generics.OperationResult;
@@ -7,13 +7,10 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.HashSet;
-import java.util.Set;
-
 @Builder
 @Getter
 @Setter(AccessLevel.PRIVATE)
-public class HeroAppearanceResponse implements OperationResult {
+public class HeroResponse implements OperationResult {
     private Long heroId;
 
     private String heroName;

@@ -6,27 +6,27 @@ import com.tinqin.project.error.general.GeneralServerError;
 import com.tinqin.project.error.hero.NoSuchHeroError;
 import com.tinqin.project.exception.hero.HeroNotFoundException;
 import com.tinqin.project.generics.Error;
-import com.tinqin.project.model.HeroAppearanceRequest;
-import com.tinqin.project.model.HeroAppearanceResponse;
-import com.tinqin.project.operation.HeroAppearanceProcess;
+import com.tinqin.project.model.appearance.HeroRequest;
+import com.tinqin.project.model.appearance.HeroResponse;
+import com.tinqin.project.operation.HeroProcess;
 import io.vavr.control.Either;
 import io.vavr.control.Try;
 import org.springframework.stereotype.Service;
 
 @Service
-public class HeroAppearanceProcessCore implements HeroAppearanceProcess {
+public class HeroProcessCore implements HeroProcess {
     private final HeroRepository heroRepository;
 
-    public HeroAppearanceProcessCore(HeroRepository heroRepository) {
+    public HeroProcessCore(HeroRepository heroRepository) {
         this.heroRepository = heroRepository;
     }
 
     @Override
-    public Either<Error, HeroAppearanceResponse> process(HeroAppearanceRequest input) {
+    public Either<Error, HeroResponse> process(HeroRequest input) {
         return Try.of(()->{
             final Hero hero = heroRepository.findById(input.getHeroId())
                     .orElseThrow(HeroNotFoundException::new);
-            return HeroAppearanceResponse.builder()
+            return HeroResponse.builder()
                     .heroId(hero.getIdHero())
                     .heroName(hero.getHeroName())
                     .heroAge(hero.getHeroAge())
