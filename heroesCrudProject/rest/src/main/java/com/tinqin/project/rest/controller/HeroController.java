@@ -59,4 +59,14 @@ private final HeroMovieProcess heroMovieProcess;
         }
         return ResponseEntity.status(HttpStatus.OK).body(response.get());
     }
+
+    @PostMapping("/getHeroStats")
+    public ResponseEntity<?> getHeroStats(@RequestBody HeroRequest heroRequest)
+    {
+        Either<Error, HeroResponse> response = heroProcess.process(heroRequest);
+        if(response.isLeft()){
+            return  ResponseEntity.status(response.getLeft().getCode()).body(response.getLeft().getMessage());
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(response.get());
+    }
 }
