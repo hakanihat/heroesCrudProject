@@ -3,6 +3,9 @@ package com.tinqin.project.rest.controller;
 import com.tinqin.project.generics.Error;
 import com.tinqin.project.model.appearance.HeroRequest;
 import com.tinqin.project.model.appearance.HeroResponse;
+import com.tinqin.project.model.fight.HeroFightRequest;
+import com.tinqin.project.model.fight.HeroFightResponse;
+import com.tinqin.project.operation.HeroFightProcess;
 import com.tinqin.project.operation.HeroProcess;
 import io.vavr.control.Either;
 import org.springframework.http.HttpStatus;
@@ -14,14 +17,26 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HeroController {
 private final HeroProcess heroProcess;
+private final HeroFightProcess heroFightProcess;
 
-    public HeroController(HeroProcess heroProcess) {
+    public HeroController(HeroProcess heroProcess, HeroFightProcess heroFightProcess) {
         this.heroProcess = heroProcess;
+        this.heroFightProcess = heroFightProcess;
     }
 
     @PostMapping("/getHeroFromDB")
     public ResponseEntity<?> getHeroFromDB(@RequestBody HeroRequest heroRequest) {
         Either<Error, HeroResponse> response = heroProcess.process(heroRequest);
+        if(response.isLeft()){
+            return  ResponseEntity.status(response.getLeft().getCode()).body(response.getLeft().getMessage());
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(response.get());
+    }
+
+    @PostMapping("/getFightResult")
+    public ResponseEntity<?> getFightResult(@RequestBody HeroFightRequest heroFightRequest)
+    {
+        Either<Error, HeroFightResponse> response = heroFightProcess.process(heroFightRequest);
         if(response.isLeft()){
             return  ResponseEntity.status(response.getLeft().getCode()).body(response.getLeft().getMessage());
         }
