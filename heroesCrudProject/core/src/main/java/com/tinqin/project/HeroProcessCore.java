@@ -24,7 +24,7 @@ public class HeroProcessCore implements HeroProcess {
     @Override
     public Either<Error, HeroResponse> process(HeroRequest input) {
         return Try.of(()->{
-            final Hero hero = heroRepository.findById(input.getHeroId())
+            final Hero hero = heroRepository.findById(input.getHeroId()) //TODO cant get the info from repo , need to fix
                     .orElseThrow(HeroNotFoundException::new);
             return HeroResponse.builder()
                     .heroId(hero.getIdHero())
