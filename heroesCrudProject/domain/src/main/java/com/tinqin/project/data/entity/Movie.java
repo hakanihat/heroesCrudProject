@@ -16,6 +16,7 @@ public class Movie {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long idMovie;
 
     private String movieName;

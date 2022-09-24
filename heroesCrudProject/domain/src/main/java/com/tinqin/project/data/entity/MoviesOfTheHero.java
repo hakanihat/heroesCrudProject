@@ -14,6 +14,7 @@ import javax.persistence.*;
 public class MoviesOfTheHero {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long idMoviesOfTheHero;
 
     @ManyToOne

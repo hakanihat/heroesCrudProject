@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface HeroAttributeRepository extends JpaRepository<HeroAttribute,Long> {
-    //HeroAttribute getHeroAttributeByIntelligenceIsGreaterThanGivenNumber (Integer number);
+
 
 
 }

@@ -13,6 +13,7 @@ import javax.persistence.*;
 public class HeroAttribute {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long idAttribute;
 
     private Integer intelligence;

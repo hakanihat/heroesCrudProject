@@ -8,5 +8,5 @@ import java.time.LocalDate;
 
 @Repository
 public interface MovieRepository extends JpaRepository<Movie,Long> {
-    Movie getMovieByMovieNameAndReleaseDate(String movieName, LocalDate releaseDate);
+   // Movie getMovieByMovieNameAndReleaseDate(String movieName, LocalDate releaseDate);
 }

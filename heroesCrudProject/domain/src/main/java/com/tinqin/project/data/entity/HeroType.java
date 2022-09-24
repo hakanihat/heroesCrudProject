@@ -14,7 +14,8 @@ import java.util.Set;
 
 public class HeroType {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long idHeroTypes;
 
     private String typeName;
