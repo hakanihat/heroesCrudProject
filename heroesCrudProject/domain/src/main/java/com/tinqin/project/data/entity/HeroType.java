@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name ="HeroTypes")
+@Table(name ="hero_types")
 
 @Getter
 @Setter
@@ -26,5 +26,8 @@ public class HeroType {
     public HeroType() {
     }
 
-
+    public HeroType(Long idHeroTypes, String typeName) {
+        this.idHeroTypes = idHeroTypes;
+        this.typeName = typeName;
+    }
 }

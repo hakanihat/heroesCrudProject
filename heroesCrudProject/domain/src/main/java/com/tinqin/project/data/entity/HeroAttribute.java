@@ -7,7 +7,7 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "HeroAttributes")
+@Table(name = "hero_attributes")
 @Getter
 @Setter
 public class HeroAttribute {
@@ -34,5 +34,13 @@ public class HeroAttribute {
     public HeroAttribute() {
     }
 
-
+    public HeroAttribute(Long idAttribute, Integer intelligence, Integer strength, Integer speed, Integer durability, Integer combat, Integer power) {
+        this.idAttribute = idAttribute;
+        this.intelligence = intelligence;
+        this.strength = strength;
+        this.speed = speed;
+        this.durability = durability;
+        this.combat = combat;
+        this.power = power;
+    }
 }
