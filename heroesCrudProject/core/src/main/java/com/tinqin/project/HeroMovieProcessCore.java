@@ -44,7 +44,7 @@ public class HeroMovieProcessCore implements HeroMovieProcess {
                     final List<MoviesOfTheHero> moviesOfTheHero = moviesOfTheHeroRepository.getMoviesOfTheHeroByHero_IdHero(hero.getIdHero());
 
                     List<HeroMovieResponse> movies= moviesOfTheHero.stream()
-                            .filter(moviesOfTheHero1 -> moviesOfTheHero1.getHero().getIdHero()==hero.getIdHero())
+                            .filter(moviesOfTheHero1 -> moviesOfTheHero1.getHero().getIdHero()==hero.getIdHero()) //no need actually
                             .map(moviesOfTheHero1 ->  movieRepository.findById(moviesOfTheHero1.getMovie().getIdMovie()).orElseThrow())
                             .map(movie -> HeroMovieResponse.builder()
                                     .movieName(movie.getMovieName())
@@ -52,8 +52,6 @@ public class HeroMovieProcessCore implements HeroMovieProcess {
                             .toList();
 
                     return movies;
-
-
 
                 }).toEither()
                 .mapLeft(throwable -> {
